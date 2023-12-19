@@ -40,7 +40,7 @@ function App() {
     };
 
     axios
-      .post('https://yoga-enrollment-form-beta.vercel.app/enroll', data)
+      .post('https://yoga-enrollment-form-olive.vercel.app/enroll', data)
       .then(() => {
         setMessage(
           'Enrollment successful!, Please pay Rs.500 to confirm your seat'
@@ -54,7 +54,7 @@ function App() {
   const handlePayment = async () => {
     try {
       const response = await axios.get(
-        'https://yoga-enrollment-form-beta.vercel.app/CompletePayment'
+        'https://yoga-enrollment-form-olive.vercel.app/CompletePayment'
       );
       if (response.data.message) {
         setMessage(response.data.message);
