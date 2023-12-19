@@ -12,8 +12,10 @@ app.use(express.json());
 app.use(
   cors({
     origin:
-      'https://yoga-enrollment-form-jlqh-2rg5ivcv2-prem-kumaar-rs-projects.vercel.app/',
+      'https://yoga-enrollment-form-jlqh-2rg5ivcv2-prem-kumaar-rs-projects.vercel.app',
     methods: ['GET', 'POST'],
+    credentials: true,
+    optionsSuccessStatus: 204,
     headers: [
       'Content-Type',
       'Authorization',
@@ -21,6 +23,7 @@ app.use(
     ],
   })
 );
+
 mongoose.connect(DB_URL);
 
 mongoose.connection.on('connected', () => {
@@ -35,18 +38,6 @@ mongoose.connection.on('disconnected', () => {
   console.log('Disconnected from MongoDB');
 });
 app.post('/enroll', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  // another common pattern
-  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET,OPTIONS,PATCH,DELETE,POST,PUT'
-  );
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
   const { name, age, batch } = req.body;
   const user = await User.create({ name, age, batch });
   res.json(user);
