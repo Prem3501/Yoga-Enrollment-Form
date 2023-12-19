@@ -33,6 +33,11 @@ app.get('/CompletePayment', (req, res) => {
     message: 'Payment Successful',
   });
 });
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Hello World',
+  });
+});
 
 app.listen(4000, () => {
   console.log('app is running on port 4000');
