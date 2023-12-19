@@ -14,7 +14,7 @@ app.use(
     origin:
       'https://yoga-enrollment-form-jlqh-2rg5ivcv2-prem-kumaar-rs-projects.vercel.app/',
     methods: ['GET', 'POST'],
-    headers: ['Content-Type', 'Authorization'],
+    headers: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'],
   })
 );
 mongoose.connect(DB_URL);
