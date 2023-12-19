@@ -25,11 +25,31 @@ mongoose.connection.on('disconnected', () => {
   console.log('Disconnected from MongoDB');
 });
 app.post('/enroll', async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, PATCH, DELETE'
+  );
   const { name, age, batch } = req.body;
   const user = await User.create({ name, age, batch });
   res.json(user);
 });
 app.get('/CompletePayment', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, PATCH, DELETE'
+  );
   res.json({
     message: 'Payment Successful',
   });
