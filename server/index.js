@@ -9,7 +9,14 @@ dotenv.config();
 const DB_URL = process.env.DB_URL;
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin:
+      'https://yoga-enrollment-form-jlqh-2rg5ivcv2-prem-kumaar-rs-projects.vercel.app/',
+    methods: ['GET', 'POST'],
+    headers: ['Content-Type', 'Authorization'],
+  })
+);
 mongoose.connect(DB_URL);
 
 mongoose.connection.on('connected', () => {
